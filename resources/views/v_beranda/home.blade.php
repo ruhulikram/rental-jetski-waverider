@@ -22,36 +22,44 @@
         <img src="{{ asset('images/hero/Contact Us!.svg') }}" alt="Contact Us" class="w-24 h-24 md:w-24 md:h-24 object-contain">
     </a>
 
-    <!-- GAMBAR HERO FULL BLEED (Dilepas dari grid utama agar mutlak menempel menyentuh tepi layar kanan!) -->
-    <div class="absolute top-[80px] lg:top-0 right-0 w-full lg:w-[50vw] h-[400px] lg:h-[100vh] pointer-events-none z-0 flex items-start justify-end overflow-visible">
-    <div class="absolute right-[-10%] w-[60%] h-[80%] bg-gradient-to-tr from-cyan-500/40 to-blue-600/30 rounded-full blur-[120px] animate-pulse"></div>
-    <img src="{{ asset('images/hero/hero-image-2.png') }}" alt="Baywalk Jetski Hero" class="absolute top-0 right-0 sm:-right-10 lg:-right-20 h-[100%] md:h-[150%] lg:h-[110%] w-auto max-w-none object-contain object-right-top drop-shadow-[0_30px_60px_rgba(34,211,238,0.5)] transform hover:scale-[1.05] transition-transform duration-700">
-</div>
+    <!-- GAMBAR HERO FULL BLEED DESKTOP (Tampil di layar besar LG+) -->
+    <div class="hidden lg:flex absolute top-0 right-0 w-[50vw] h-[100vh] pointer-events-none z-0 items-start justify-end overflow-visible">
+        <div class="absolute right-[-10%] w-[60%] h-[80%] bg-gradient-to-tr from-cyan-500/40 to-blue-600/30 rounded-full blur-[120px] animate-pulse"></div>
+        <img src="{{ asset('images/hero/hero-image-2.png') }}" alt="Baywalk Jetski Hero" class="absolute top-0 -right-20 h-[110%] w-auto max-w-none object-contain object-right-top drop-shadow-[0_30px_60px_rgba(34,211,238,0.5)] transform hover:scale-[1.05] transition-transform duration-700">
+    </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {{-- ========================================== --}}
-        {{-- HERO SECTION (TEXT)                        --}}
+        {{-- HERO SECTION (TEXT & MOBILE PHOTO)        --}}
         {{-- ========================================== --}}
-        <div class="flex flex-col lg:flex-row items-center justify-between mb-16 lg:mb-32 min-h-[calc(100vh-160px)] pointer-events-none">
+        <div class="flex flex-col lg:flex-row items-center justify-between mb-16 lg:mb-32 min-h-0 lg:min-h-[calc(100vh-160px)]">
             
             {{-- Text Content Porsi Kiri --}}
-            <div class="w-full lg:w-[50%] text-center lg:text-left space-y-8 max-w-2xl mx-auto lg:mx-0 pointer-events-auto z-10">
+            <div class="w-full lg:w-[50%] text-center lg:text-left space-y-6 lg:space-y-8 max-w-2xl mx-auto lg:mx-0 pointer-events-auto z-10">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-semibold tracking-wide uppercase shadow-[0_0_15px_rgba(34,211,238,0.15)]">
                     <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
                     Layanan Sewa Jetski Jakarta
                 </div>
                 
-                <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
-                    Jelajahi Pesisir <br/>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+                    Jelajahi Pesisir <br class="hidden sm:inline"/>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">Teluk Jakarta</span>
                 </h1>
                 
-                <p class="text-lg lg:text-xl text-slate-400 leading-relaxed font-light">
+                <p class="text-base sm:text-lg lg:text-xl text-slate-400 leading-relaxed font-light">
                     Layanan sewa jetski yang aman dan terpercaya. Temukan paket terbaik kami dan nikmati waktu luang Anda mengeksplorasi laut bersama armada kami di Baywalk Mall.
                 </p>
+
+                <!-- GAMBAR HERO MOBILE (Tampil di mobile < lg, mentok rapat ke tepi layar sebelah kiri) -->
+                <div class="block lg:hidden relative my-6 -ml-4 sm:-ml-6 pr-4 sm:pr-6 w-[calc(100%+2rem)] sm:w-[calc(100%+3rem)] z-10">
+                    <div class="relative w-full flex items-center justify-start">
+                        <div class="absolute left-0 w-3/4 h-full bg-gradient-to-r from-cyan-500/30 to-blue-600/10 rounded-r-full blur-2xl animate-pulse"></div>
+                        <img src="{{ asset('images/hero/hero-image-2.png') }}" alt="Baywalk Jetski Hero Mobile" class="relative z-10 w-full max-h-[300px] sm:max-h-[380px] object-contain object-left drop-shadow-[0_15px_30px_rgba(34,211,238,0.4)] transform hover:scale-[1.02] transition-transform duration-500">
+                    </div>
+                </div>
                 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2 sm:pt-4">
                     @auth
                         <a href="{{ route('backend.v_index.index') }}" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-300 bg-cyan-600 border border-transparent rounded-2xl hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-600 focus:ring-offset-slate-900 shadow-[0_0_30px_rgba(8,145,178,0.5)] hover:shadow-[0_0_40px_rgba(6,182,212,0.6)] hover:-translate-y-1">
                             Pesan Sekarang

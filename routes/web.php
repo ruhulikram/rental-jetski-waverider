@@ -12,6 +12,23 @@ use App\Http\Controllers\Api\PaymentApiController;
 // Public routes
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [HomeController::class, 'about']);
+Route::get('/invoice', function () {
+    $booking = (object)[
+        'booking_code' => 'BOOK-B6F3D813',
+        'booking_date' => '2025-07-08',
+        'booking_time' => '09:40:00',
+        'total_price' => 600000,
+        'payment_status' => 'settlement',
+        'order_id' => 'MIDTRANS-98234812',
+        'payment_method' => 'Bank Transfer (BCA)',
+        'payment_time' => '08 Jul 2025, 09:42 WIB',
+        'jetskiPackage' => (object)[
+            'name' => 'Paket 50 Menit',
+            'duration' => 50,
+        ],
+    ];
+    return view('payment-success', compact('booking'));
+});
 
 // Auth routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
